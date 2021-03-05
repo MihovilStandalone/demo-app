@@ -1,0 +1,12 @@
+sudo: required
+dist: trusty
+
+matrix:
+  include:
+    - language: java
+      jdk: openjdk11
+      if: branch == master || branch == main
+      script:
+        - ./gradlew build
+      before_script:
+        - cd ./travis-test/
