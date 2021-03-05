@@ -8,5 +8,3 @@ matrix:
       if: branch == master || branch == main
       script:
         - ./gradlew build
-      before_script:
-        - cd ./travis-test/
