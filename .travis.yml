@@ -5,6 +5,17 @@ matrix:
   include:
     - language: java
       jdk: openjdk11
-      if: branch == master || branch == main
+      if: (branch == master OR branch == main) AND type = push
       script:
         - ./gradlew build
+
+    - language: node_js
+      node_js: stable
+      if: (branch = master OR branch == main) AND type = push
+      install:
+        - npm install
+      before_install:
+        - cd ./fr/
+      script:
+        - npm run build
+
