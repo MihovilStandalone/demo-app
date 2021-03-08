@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {GetServiceService} from './get-service.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fr';
+
+  constructor(private getService: GetServiceService) {
+    this.getService.getValue().subscribe(value => console.log(value));
+  }
+
 }

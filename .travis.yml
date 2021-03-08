@@ -1,6 +1,9 @@
 sudo: required
 dist: trusty
 
+services:
+  - docker
+
 matrix:
   include:
     - language: java
@@ -8,6 +11,7 @@ matrix:
       if: (branch == master OR branch == main)
       script:
         - ./gradlew build
+        - docker build -t demo-backend:latest .
 
     - language: node_js
       node_js: stable
@@ -18,4 +22,5 @@ matrix:
         - cd ./fr/
       script:
         - npm run build
+        - docker build -t demo-frontend:latest .
 
