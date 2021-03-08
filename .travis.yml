@@ -12,6 +12,8 @@ matrix:
       script:
         - ./gradlew build
         - docker build -t demo-backend:latest .
+      before_script:
+        - cd ./travis-test/
 
     - language: node_js
       node_js: stable
